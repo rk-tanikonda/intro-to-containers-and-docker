@@ -6,7 +6,11 @@ USER node
 
 WORKDIR /home/node/code
 
-COPY --chown=node index.js /home/node/code/index.js
+COPY --chown=node:node package*.json ./
+
+RUN npm ci
+
+COPY --chown=node . .
 
 # ADD index.js /home/node/code/index.js
 
